@@ -30,10 +30,10 @@ public class Board {
 	}
 	
 	/**
-	 * This tests if the given board state is solvable.
-	 * @return true if solvable, false otherwise
+	 * Gets the number of inversions in the board.
+	 * @return the number of inversions in the board.
 	 */
-	public boolean isSolvable() {
+	private int getInversions() {
 		// Get the number of inversions
 		int inversions = 0;
 		
@@ -56,6 +56,17 @@ public class Board {
 				}
 			}
 		}
+		
+		return inversions;
+	}
+	
+	/**
+	 * This tests if the given board state is solvable.
+	 * @return true if solvable, false otherwise
+	 */
+	public boolean isSolvable() {
+		
+		int inversions = getInversions();
 		
 		if(inversions % 2 == 0) {
 			// Even
@@ -125,11 +136,11 @@ public class Board {
 	}
 	
 	/**
-	 * My admissible heuristic.
-	 * @return
+	 * My admissible heuristic using number of inversions in the board.
+	 * @return admissible heuristic
 	 */
 	public int myHeuristic() {
-		return 0;
+		return getInversions();
 	}
 	
 	/**
